@@ -844,6 +844,7 @@ static bool _game_type_has_saves(const game_type g)
     case GAME_TYPE_ARENA:
     case GAME_TYPE_HIGH_SCORES:
     case GAME_TYPE_INSTRUCTIONS:
+    case GAME_TYPE_OPTIONS:
     case GAME_TYPE_UNSPECIFIED:
         return false;
     default:

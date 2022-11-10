@@ -433,6 +433,8 @@ static const game_modes_menu_item entries[] =
         "Pit computer controlled teams versus each other!" },
     {GAME_TYPE_HIGH_SCORES, "High Scores",
         "View the high score list." },
+    {GAME_TYPE_OPTIONS, "Options",
+        "Open the options menu." },
 };
 
 static void _construct_game_modes_menu(shared_ptr<OuterMenu>& container)
@@ -741,6 +743,7 @@ private:
         case GAME_TYPE_ARENA:
         case GAME_TYPE_HIGH_SCORES:
         case GAME_TYPE_INSTRUCTIONS:
+        case GAME_TYPE_OPTIONS:
             break;
 
         default:
