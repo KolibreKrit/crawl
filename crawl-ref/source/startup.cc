@@ -936,6 +936,14 @@ void UIStartupMenu::menu_item_activated(int id)
     case GAME_TYPE_HIGH_SCORES:
         show_hiscore_table();
         return;
+            
+    case GAME_TYPE_OPTIONS:
+    {
+        Menu m = Menu();
+        m.show();
+        //        show_skill_menu_help();
+        return;
+    }
 
     default:
         // It was a savegame instead
