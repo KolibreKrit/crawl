@@ -2099,6 +2099,8 @@ void process_command(command_type cmd, command_type prev_cmd)
 #endif
 
     case CMD_TOGGLE_TRAVEL_SPEED:        _toggle_travel_speed(); break;
+    case CMD_TOGGLE_PLAYER_SPECIES: Options.show_player_species = !Options.show_player_species; break;
+    case CMD_TOGGLE_CLEAR_MESSAGES: Options.clear_messages = !Options.clear_messages; break;
 
         // Map commands.
     case CMD_CLEAR_MAP:       clear_map_or_travel_trail(); break;
