@@ -640,12 +640,22 @@ public:
             MEL_ITEM, '?', CMD_DISPLAY_COMMANDS));
         add_entry(new CmdMenuEntry("Lookup info",
             MEL_ITEM, '/', CMD_LOOKUP_HELP));
-        add_entry(new CmdMenuEntry("Toggle auto pickup",
-            MEL_ITEM, 'A', CMD_TOGGLE_AUTOPICKUP));
-        add_entry(new CmdMenuEntry("Toggle showing of player species",
-            MEL_ITEM, 'P', CMD_TOGGLE_PLAYER_SPECIES));
-        add_entry(new CmdMenuEntry("Toggle clearing messages after each turn",
-            MEL_ITEM, 'M', CMD_TOGGLE_CLEAR_MESSAGES));
+        if (Options.show_player_species) {
+            add_entry(new CmdMenuEntry("Turn off showing of player species",
+                MEL_ITEM, 'P', CMD_TOGGLE_PLAYER_SPECIES));
+        }
+        else {
+            add_entry(new CmdMenuEntry("Turn on showing of player species",
+               MEL_ITEM, 'P', CMD_TOGGLE_PLAYER_SPECIES));
+        }
+        if (Options.clear_messages) {
+            add_entry(new CmdMenuEntry("Turn off clearing messages after each turn",
+                MEL_ITEM, 'M', CMD_TOGGLE_CLEAR_MESSAGES));
+        }
+        else {
+            add_entry(new CmdMenuEntry("Turn on clearing messages after each turn",
+                MEL_ITEM, 'M', CMD_TOGGLE_CLEAR_MESSAGES));
+        }
 #ifdef TARGET_OS_MACOSX
         add_entry(new CmdMenuEntry("Show options file in finder",
             MEL_ITEM, 'O', CMD_REVEAL_OPTIONS));

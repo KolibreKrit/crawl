@@ -2099,8 +2099,40 @@ void process_command(command_type cmd, command_type prev_cmd)
 #endif
 
     case CMD_TOGGLE_TRAVEL_SPEED:        _toggle_travel_speed(); break;
-    case CMD_TOGGLE_PLAYER_SPECIES: Options.show_player_species = !Options.show_player_species; break;
-    case CMD_TOGGLE_CLEAR_MESSAGES: Options.clear_messages = !Options.clear_messages; break;
+    case CMD_TOGGLE_PLAYER_SPECIES:
+        {
+            FILE *option_file = NULL;
+            option_file = fopen(Options.filename.c_str(), "a");
+            if (option_file == NULL) {
+                mpr("No options file");
+            }
+            else if (Options.show_player_species) {
+                fprintf(option_file, "\nshow_player_species = false");
+            }
+            else {
+                fprintf(option_file, "\nshow_player_species = true");
+            }
+            fclose(option_file);
+            Options.show_player_species = !Options.show_player_species;
+            break;
+        }
+    case CMD_TOGGLE_CLEAR_MESSAGES:
+        {
+            FILE *option_file = NULL;
+            option_file = fopen(Options.filename.c_str(), "a");
+            if (option_file == NULL) {
+                mpr("No options file");
+            }
+            else if (Options.clear_messages) {
+                fprintf(option_file, "\nclear_messages = false");
+            }
+            else {
+                fprintf(option_file, "\nclear_messages = true");
+            }
+            fclose(option_file);
+            Options.clear_messages = !Options.clear_messages;
+            break;
+        }
 
         // Map commands.
     case CMD_CLEAR_MAP:       clear_map_or_travel_trail(); break;
