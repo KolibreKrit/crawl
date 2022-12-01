@@ -658,11 +658,11 @@ public:
         }
         if (Options.explore_greedy) {
             add_entry(new CmdMenuEntry("Turn off greedy explore to go after items",
-                MEL_ITEM, 'M', CMD_TOGGLE_EXPLORE_GREEDY));
+                MEL_ITEM, 'E', CMD_TOGGLE_EXPLORE_GREEDY));
         }
         else {
             add_entry(new CmdMenuEntry("Turn on greedy explore to go after items",
-                MEL_ITEM, 'M', CMD_TOGGLE_EXPLORE_GREEDY));
+                MEL_ITEM, 'E', CMD_TOGGLE_EXPLORE_GREEDY));
         }
 #ifdef TARGET_OS_MACOSX
         add_entry(new CmdMenuEntry("Show options file in finder",

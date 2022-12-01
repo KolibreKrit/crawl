@@ -2143,7 +2143,7 @@ void process_command(command_type cmd, command_type prev_cmd)
             if (option_file == NULL) {
                 mpr("No options file");
             }
-            else if (Options.clear_messages) {
+            else if (Options.explore_greedy) {
                 fprintf(option_file, "\nexplore_greedy = false");
             }
             else {
