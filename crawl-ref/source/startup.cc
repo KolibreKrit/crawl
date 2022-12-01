@@ -656,6 +656,14 @@ public:
             add_entry(new CmdMenuEntry("Turn on clearing messages after each turn",
                 MEL_ITEM, 'M', CMD_TOGGLE_CLEAR_MESSAGES));
         }
+        if (Options.explore_greedy) {
+            add_entry(new CmdMenuEntry("Turn off greedy explore to go after items",
+                MEL_ITEM, 'M', CMD_TOGGLE_EXPLORE_GREEDY));
+        }
+        else {
+            add_entry(new CmdMenuEntry("Turn on greedy explore to go after items",
+                MEL_ITEM, 'M', CMD_TOGGLE_EXPLORE_GREEDY));
+        }
 #ifdef TARGET_OS_MACOSX
         add_entry(new CmdMenuEntry("Show options file in finder",
             MEL_ITEM, 'O', CMD_REVEAL_OPTIONS));

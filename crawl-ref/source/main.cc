@@ -844,6 +844,9 @@ static bool _cmd_is_repeatable(command_type cmd, bool is_again = false)
     case CMD_TOGGLE_AUTOPICKUP:
     case CMD_TOGGLE_TRAVEL_SPEED:
     case CMD_TOGGLE_SOUND:
+    case CMD_TOGGLE_CLEAR_MESSAGES:
+    case CMD_TOGGLE_PLAYER_SPECIES:
+    case CMD_TOGGLE_EXPLORE_GREEDY:
     case CMD_ADJUST_INVENTORY:
     case CMD_QUIVER_ITEM:
     case CMD_REPLAY_MESSAGES:
@@ -2131,6 +2134,23 @@ void process_command(command_type cmd, command_type prev_cmd)
             }
             fclose(option_file);
             Options.clear_messages = !Options.clear_messages;
+            break;
+        }
+    case CMD_TOGGLE_EXPLORE_GREEDY:
+        {
+            FILE *option_file = NULL;
+            option_file = fopen(Options.filename.c_str(), "a");
+            if (option_file == NULL) {
+                mpr("No options file");
+            }
+            else if (Options.clear_messages) {
+                fprintf(option_file, "\nexplore_greedy = false");
+            }
+            else {
+                fprintf(option_file, "\nexplore_greedy = true");
+            }
+            fclose(option_file);
+            Options.explore_greedy = !Options.explore_greedy;
             break;
         }
 
