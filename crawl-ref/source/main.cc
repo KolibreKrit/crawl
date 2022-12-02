@@ -2100,7 +2100,24 @@ void process_command(command_type cmd, command_type prev_cmd)
         mprf("Sound effects are now %s.", Options.sounds_on ? "on" : "off");
         break;
 #endif
-
+    case CMD_TOGGLE_SOUND:
+        {
+            FILE *option_file = NULL;
+            option_file = fopen(Options.filename.c_str(), "a");
+            if (option_file == NULL) {
+                mpr("No options file");
+            }
+            else if (Options.sounds_on) {
+                fprintf(option_file, "\nsounds_on = false");
+            }
+            else {
+                fprintf(option_file, "\nsounds_on = true");
+            }
+            fclose(option_file);
+            Options.sounds_on = !Options.sounds_on;
+            break;
+        }
+        
     case CMD_TOGGLE_TRAVEL_SPEED:        _toggle_travel_speed(); break;
     case CMD_TOGGLE_PLAYER_SPECIES:
         {

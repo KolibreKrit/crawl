@@ -664,6 +664,14 @@ public:
             add_entry(new CmdMenuEntry("Turn on greedy explore to go after items",
                 MEL_ITEM, 'E', CMD_TOGGLE_EXPLORE_GREEDY));
         }
+        if (Options.sounds_on){
+            add_entry(new CmdMenuEntry("Turn off Sound",
+                MEL_ITEM, 'M', CMD_TOGGLE_SOUND));
+        }
+        else{
+            add_entry(new CmdMenuEntry("Turn on Sound",
+                MEL_ITEM, 'M', CMD_TOGGLE_SOUND));
+        }
 #ifdef TARGET_OS_MACOSX
         add_entry(new CmdMenuEntry("Show options file in finder",
             MEL_ITEM, 'O', CMD_REVEAL_OPTIONS));
