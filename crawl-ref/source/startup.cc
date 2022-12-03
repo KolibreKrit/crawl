@@ -665,12 +665,12 @@ public:
                 MEL_ITEM, 'E', CMD_TOGGLE_EXPLORE_GREEDY));
         }
         if (Options.sounds_on){
-            add_entry(new CmdMenuEntry("Turn off Sound",
-                MEL_ITEM, 'M', CMD_TOGGLE_SOUND));
+            add_entry(new CmdMenuEntry("Turn off Game Time",
+                MEL_ITEM, 'T', CMD_TOGGLE_GAME_TIME));
         }
         else{
-            add_entry(new CmdMenuEntry("Turn on Sound",
-                MEL_ITEM, 'M', CMD_TOGGLE_SOUND));
+            add_entry(new CmdMenuEntry("Turn on Game Time",
+                MEL_ITEM, 'T', CMD_TOGGLE_GAME_TIME));
         }
 #ifdef TARGET_OS_MACOSX
         add_entry(new CmdMenuEntry("Show options file in finder",

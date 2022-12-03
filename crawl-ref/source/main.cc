@@ -847,6 +847,8 @@ static bool _cmd_is_repeatable(command_type cmd, bool is_again = false)
     case CMD_TOGGLE_CLEAR_MESSAGES:
     case CMD_TOGGLE_PLAYER_SPECIES:
     case CMD_TOGGLE_EXPLORE_GREEDY:
+    case CMD_TOGGLE_SOUND_MENU:
+    case CMD_TOGGLE_GAME_TIME:
     case CMD_ADJUST_INVENTORY:
     case CMD_QUIVER_ITEM:
     case CMD_REPLAY_MESSAGES:
@@ -2100,7 +2102,7 @@ void process_command(command_type cmd, command_type prev_cmd)
         mprf("Sound effects are now %s.", Options.sounds_on ? "on" : "off");
         break;
 #endif
-    case CMD_TOGGLE_SOUND:
+    case CMD_TOGGLE_SOUND_MENU:
         {
             FILE *option_file = NULL;
             option_file = fopen(Options.filename.c_str(), "a");
@@ -2117,7 +2119,25 @@ void process_command(command_type cmd, command_type prev_cmd)
             Options.sounds_on = !Options.sounds_on;
             break;
         }
-        
+    
+    case CMD_TOGGLE_GAME_TIME:
+    {
+        FILE *option_file = NULL;
+            option_file = fopen(Options.filename.c_str(), "a");
+            if (option_file == NULL) {
+                mpr("No options file");
+            }
+            else if (Options.show_game_time) {
+                fprintf(option_file, "\nshow_game_time = false");
+            }
+            else {
+                fprintf(option_file, "\nshow_game_time = true");
+            }
+            fclose(option_file);
+            Options.show_game_time = !Options.show_game_time;
+            break;
+    }
+
     case CMD_TOGGLE_TRAVEL_SPEED:        _toggle_travel_speed(); break;
     case CMD_TOGGLE_PLAYER_SPECIES:
         {
